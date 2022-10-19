@@ -1,7 +1,6 @@
 package be.upglassback.core.repository;
 
 import be.upglassback.core.HibernateUtil;
-import be.upglassback.core.entities.Country;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
@@ -16,7 +15,7 @@ public class CountryRepositoryImpl {
 
     // Ajoute des méthode que d'opération de CRUD.
 
-    public void create(Country country) {
+    /*public void create(Country country) {
         // retourner un boolean pour dire si mon execution est bien passée.
         // retourner le pays qui a était insérer ?
         // le pays insérer on connais pas sont ID parceque c'est un autoIncrémente.
@@ -91,5 +90,5 @@ public class CountryRepositoryImpl {
     // return countries;
     // }
 
-
+*/
 }

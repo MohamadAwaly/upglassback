@@ -2,7 +2,6 @@ package be.upglassback.core.services;
 
 import be.upglassback.core.HibernateUtil;
 import be.upglassback.core.dto.CountryDTO;
-import be.upglassback.core.entities.Country;
 import be.upglassback.core.repository.CountryRepositoryImpl;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -12,7 +11,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 
 public class CountryService {
-
+/*
     //Une methode par besoin
     //Un service interagie avec un ou plusieur repository ( DAO )
     //On appel ca un service pass pla
@@ -45,13 +44,13 @@ public class CountryService {
             Country country = countryRepository.getById(id);
             country.setCountryName(nouveaunom);
             tx.commit();
-        } catch (Exception e ) {
-            if (tx != null){
+        } catch (Exception e) {
+            if (tx != null) {
                 tx.rollback();
             }
             e.printStackTrace();
-        }finally {
-            if ( session != null) {
+        } finally {
+            if (session != null) {
                 session.close();
             }
         }
@@ -59,7 +58,7 @@ public class CountryService {
 
     }
 
-    public Country getContry(){
+    public Country getContry() {
 
         EntityManager em = null;
         EntityTransaction ts = null;
@@ -67,14 +66,13 @@ public class CountryService {
         try {
             em = new EntityManagerHolder().gerCurrentEntityManager();
             ts = em.getTransaction();
-        } catch (Exception e ) {
+        } catch (Exception e) {
             e.printStackTrace();
         } finally {
 
         }
 
     }
-
 
 
     public void createCountry(Country country) {
@@ -131,5 +129,5 @@ public class CountryService {
          * */
 
 
-    }
+    //}
 }

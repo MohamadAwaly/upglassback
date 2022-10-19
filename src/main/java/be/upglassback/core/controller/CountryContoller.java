@@ -1,13 +1,11 @@
 package be.upglassback.core.controller;
 
-import be.upglassback.core.entities.Country;
 import be.upglassback.core.services.CountryService;
-import org.springframework.stereotype.Controller;
 
 import java.util.Scanner;
 
 public class CountryContoller {
-    CountryService countryService = new CountryService();
+    /*CountryService countryService = new CountryService();
 
     public void renomme (){
         countryService.renomme(1, "test");
@@ -29,5 +27,5 @@ public class CountryContoller {
         countryService.createCountry(country);
         System.out.println("Le pays a était créé, son identifiant est " + country.getIdCountry());
     }
-
+*/
 }
