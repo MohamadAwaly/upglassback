@@ -6,7 +6,7 @@ import be.upglassback.core.entities.Window;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
-import javax.persistence.TypedQuery;
+import javax.persistence.Query;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,11 +21,22 @@ public class WindowRepository  {
         windows = new ArrayList<>();
     }
 
-    public List<Window> findAll() {
-        System.out.printf("methode findall");
-        EntityManager em = EMF.getEM();
-        TypedQuery<Window> query = em.createNamedQuery("Windows.ReferencesList", Window.class);
-        return query.getResultList();
+    public List findAll() {
+        try {
+            System.out.printf("methode findall");
+            EntityManager em = EMF.getEM();
+            Query query = em.createNamedQuery("Windows.ReferencesList");
+            return query.getResultList();
+        } catch (Exception e){
+            System.out.println("Erreur ");
+            return null;
+        }
+
+    }
+
+    public List<Integer> windowsIds( EntityManager em ) {
+        Query queryIds = em.createNamedQuery( "Windows.ids" );
+        return queryIds.getResultList();
     }
 
 

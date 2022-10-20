@@ -5,12 +5,36 @@
     <persistence-unit name="upglass" transaction-type="RESOURCE_LOCAL">
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
 
+        <class>be.upglassback.core.entities.Window</class>
+        <class>be.upglassback.core.entities.AddressUser</class>
+        <class>be.upglassback.core.entities.Address</class>
+        <class>be.upglassback.core.entities.AppointmentHistory</class>
+        <class>be.upglassback.core.entities.Appointment</class>
+        <class>be.upglassback.core.entities.BillingDocumentWindow</class>
+        <class>be.upglassback.core.entities.BillingDocument</class>
+        <class>be.upglassback.core.entities.BodyShellType</class>
+        <class>be.upglassback.core.entities.Brand</class>
+        <class>be.upglassback.core.entities.Car</class>
+        <class>be.upglassback.core.entities.City</class>
         <class>be.upglassback.core.entities.Country</class>
+        <class>be.upglassback.core.entities.DocumentsType</class>
+        <class>be.upglassback.core.entities.Model</class>
+        <class>be.upglassback.core.entities.OptionsWindow</class>
+        <class>be.upglassback.core.entities.Order</class>
+        <class>be.upglassback.core.entities.PaymentMethod</class>
+        <class>be.upglassback.core.entities.Permission</class>
+        <class>be.upglassback.core.entities.RolePermission</class>
+        <class>be.upglassback.core.entities.Role</class>
+        <class>be.upglassback.core.entities.Team</class>
+        <class>be.upglassback.core.entities.User</class>
+        <class>be.upglassback.core.entities.WindowOptionWindow</class>
+        <class>be.upglassback.core.entities.WindowOrder</class>
+        <class>be.upglassback.core.entities.WindowsType</class>
 
         <properties>
             <!-- Configuring JDBC properties -->
             <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
-            <property name="javax.persistence.jdbc.url" value="jdbc:mysql://38.242.214.177:3306/uglass?useSSL=false"/>
+            <property name="javax.persistence.jdbc.url" value="jdbc:mysql://38.242.214.177:3306/upglass?useSSL=false"/>
             <property name="javax.persistence.jdbc.user" value="moh"/>
             <property name="javax.persistence.jdbc.password" value="Jnbqdl0139-"/>
 
