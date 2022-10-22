@@ -6,32 +6,7 @@ import java.util.Collection;
 import java.util.Objects;
 
 @NamedQueries( value = {
-        @NamedQuery( name = "Windows.ids", query = "select w.idWindow from Window  w" ),
-        @NamedQuery( name = "Windows.ReferencesListPag", query = "select w from Window w "
-                + "left join WindowOptionWindow wow on wow.window = w "
-                + "left join OptionsWindow ow on wow.optionsWindow = ow "
-                + "where w.idWindow in :ids "
-                + "group by w.idWindow "
-                + "ORDER BY w.windowsType.name, w.idWindow desc " ),
-        @NamedQuery( name = "Windows.ReferencesList", query = "select w from Window w "
-                + "left join WindowOptionWindow wow on wow.window = w "
-                + "left join OptionsWindow ow on wow.optionsWindow = ow "
-                + "group by w.idWindow "
-                + "ORDER BY w.windowsType.name, w.idWindow desc " ),
-        @NamedQuery( name = "Windows.find", query = "select w from Window w "
-                + "left join WindowOptionWindow  wow on wow.window = w "
-                + "left join OptionsWindow  ow on wow.optionsWindow = ow "
-                + "where w.name like :name "
-                + "group by w.idWindow "
-                + "ORDER BY w.idWindow DESC " ),
-        @NamedQuery( name = "Windows.ReferenceExist", query = "select w from Window w where w.code = :code" ),
-        @NamedQuery( name = "Windows.StockList", query = "select w from Window w where w.totalQty > 0 ORDER BY w.code" ),
-        @NamedQuery( name = "Windows.CustomSearch", query = "select w from Window w "
-                + "left join WindowOptionWindow  wow on wow.window = w "
-                + "left join OptionsWindow  ow on wow.optionsWindow = ow "
-                + "where w.model.modelName = :model and w.windowsType = :windowtype "
-                + "group by w.idWindow "
-                + "order by w.windowsType.name DESC " )
+        @NamedQuery(name = "Window.list", query = "select w.code, w.name from Window w")
 } )
 
 @Entity

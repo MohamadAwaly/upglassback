@@ -11,10 +11,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Repository
-public class WindowRepository  {
+public class WindowRepository {
 
     //windows List
     public static List<Window> windows;
+
+    //Get all window reference list
+    public List<Window> findReferenceByPagination(EntityManager em) {
+        Query query = em.createNamedQuery("Window.list");
+        return query.getResultList();
+    }
 
     //Constructor
     public WindowRepository() {
@@ -27,15 +33,15 @@ public class WindowRepository  {
             EntityManager em = EMF.getEM();
             Query query = em.createNamedQuery("Windows.ReferencesList");
             return query.getResultList();
-        } catch (Exception e){
+        } catch (Exception e) {
             System.out.println("Erreur ");
             return null;
         }
 
     }
 
-    public List<Integer> windowsIds( EntityManager em ) {
-        Query queryIds = em.createNamedQuery( "Windows.ids" );
+    public List<Integer> windowsIds(EntityManager em) {
+        Query queryIds = em.createNamedQuery("Windows.ids");
         return queryIds.getResultList();
     }
 
