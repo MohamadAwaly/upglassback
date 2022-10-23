@@ -1,49 +1,27 @@
-package be.upglassback.core.entities;
+package be.upglassback.core.dto;
 
-import javax.persistence.*;
-import java.io.Serializable;
+import be.upglassback.core.entities.*;
+
 import java.util.Collection;
-import java.util.Objects;
 
-@NamedQueries(value = {
-        @NamedQuery(name = "Window.list",
-                query = "select w from Window w ")
-})
+public class WindowDto {
 
-@Entity
-@Table(name = "windows")
-public class Window implements Serializable {
-    private static final long serialVersionUID = 1L;
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_window", nullable = false)
     private int idWindow;
-    @Column(name = "code", nullable = false, length = 255)
     private String code;
-    @Column(name = "name", nullable = false, length = 255)
     private String name;
-    @Column(name = "total_quantity", nullable = false)
     private int totalQty;
-    @Column(name = "unit_sale_price", nullable = false)
     private int unitSalePrice;
 
-    @ManyToOne
-    @JoinColumn(name = "id_model", referencedColumnName = "id_model", nullable = true)
-    private Model model;
-    @ManyToOne
-    @JoinColumn(name = "id_windowsType", referencedColumnName = "id_windowsType", nullable = false)
-    private WindowsType windowsType;
+    private ModelDto model;
 
-    @OneToMany(mappedBy = "window", cascade = {CascadeType.PERSIST, CascadeType.MERGE}, fetch = FetchType.LAZY)
+    private WindowsType windowsType;
     private Collection<WindowOptionWindow> windowOptionWindows;
-    @OneToMany(mappedBy = "window", cascade = {CascadeType.PERSIST, CascadeType.MERGE}, fetch = FetchType.LAZY)
     private Collection<WindowOrder> windowOrders;
-    @OneToMany(mappedBy = "window", cascade = {CascadeType.PERSIST, CascadeType.MERGE}, fetch = FetchType.LAZY)
     private Collection<BillingDocumentWindow> billingDocumentWindows;
 
     //Constructor
-    public Window() {
+    public WindowDto() {
     }
 
     public int getIdWindow() {
@@ -78,11 +56,11 @@ public class Window implements Serializable {
         this.unitSalePrice = unitSalePrice;
     }
 
-    public Model getModel() {
+    public ModelDto getModel() {
         return model;
     }
 
-    public void setModel(Model model) {
+    public void setModel(ModelDto model) {
         this.model = model;
     }
 
@@ -134,24 +112,5 @@ public class Window implements Serializable {
         this.billingDocumentWindows = billingDocumentWindows;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o)
-            return true;
-        if (o == null || getClass() != o.getClass())
-            return false;
-        Window window = (Window) o;
-        return idWindow == window.idWindow && totalQty == window.totalQty && unitSalePrice == window.unitSalePrice
-                && code.equals(window.code) && name.equals(window.name) && Objects.equals(model,
-                window.model) && Objects.equals(windowsType, window.windowsType) && Objects.equals(
-                windowOptionWindows, window.windowOptionWindows) && Objects.equals(windowOrders,
-                window.windowOrders) && Objects.equals(billingDocumentWindows, window.billingDocumentWindows);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(idWindow, code, name, totalQty, unitSalePrice, model, windowsType, windowOptionWindows,
-                windowOrders, billingDocumentWindows);
-    }
 
 }

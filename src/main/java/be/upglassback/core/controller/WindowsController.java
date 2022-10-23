@@ -1,5 +1,6 @@
 package be.upglassback.core.controller;
 
+import be.upglassback.core.dto.WindowDto;
 import be.upglassback.core.entities.Window;
 import be.upglassback.core.services.WindowService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,23 +10,14 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/window")
-public class Windows {
+public class WindowsController {
 
     @Autowired
     WindowService windowService;
 
-//    @GetMapping("/display")
-//    public List<Integer> displayWindow() {
-//        List<Integer> ids = windowService.windowsIds();
-//        return ids;
-//
-//    }
-
     @GetMapping("/display")
-    public List<Window> displayWindow() {
-        List<Window> windows= windowService.findReferenceByPagination();
-        return windows;
-
+    public List<WindowDto> displayWindow() {
+        return windowService.findReferenceByPagination();
     }
 
     //@GetMapping("create-window")

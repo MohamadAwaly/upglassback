@@ -6,50 +6,49 @@ import java.util.Collection;
 import java.util.Date;
 import java.util.Objects;
 
-@NamedQueries( value = {
-        @NamedQuery( name = "Windows.modelList", query = "select distinct m  from Model m " +
+@NamedQueries(value = {
+        @NamedQuery(name = "Windows.modelList", query = "select distinct m  from Model m " +
                 "left join Brand b on b = m.brand " +
-                " where b.idBrand = :idBrand " ),
-        @NamedQuery( name = "Windows.modelListByidBrand", query = "select distinct m.modelName from Model  m " +
+                " where b.idBrand = :idBrand "),
+        @NamedQuery(name = "Windows.modelListByidBrand", query = "select distinct m.modelName from Model  m " +
                 "left join Brand b on b = m.brand " +
-                "where b.idBrand = :idBrand " ),
-        @NamedQuery( name = "Windows.modelListByBrandAndBody", query = "select m from Model m " +
+                "where b.idBrand = :idBrand "),
+        @NamedQuery(name = "Windows.modelListByBrandAndBody", query = "select m from Model m " +
                 "left join Brand b on b = m.brand " +
                 "left join BodyShellType bst on bst = m.bodyShellType " +
-                "where b.idBrand = :idBrand  and  bst.idbodyShelTypes = :idbodyShelTypes " ),
-        @NamedQuery( name = "Model.model", query = "select m from Model  m" )
-} )
+                "where b.idBrand = :idBrand  and  bst.idbodyShelTypes = :idbodyShelTypes "),
+        @NamedQuery(name = "Model.model", query = "select m from Model  m")
+})
 
 @Entity
-@Table( name = "models" )
-
+@Table(name = "models")
 public class Model implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
-    @GeneratedValue( strategy = GenerationType.IDENTITY )
-    @Column( name = "id_model", nullable = false )
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_model", nullable = false)
     private int idModel;
 
-    @Column( name = "model_name", nullable = false, length = 255 )
+    @Column(name = "model_name", nullable = false, length = 255)
     private String modelName;
-    @Column( name = "code", nullable = false, length = 255 )
+    @Column(name = "code", nullable = false, length = 255)
     private String code;
-    @Column( name = "begin_date", nullable = false )
-    private Date   beginDate;
-    @Column( name = "end_date", nullable = false )
-    private Date   endDate;
+    @Column(name = "begin_date", nullable = false)
+    private Date beginDate;
+    @Column(name = "end_date", nullable = false)
+    private Date endDate;
 
     @ManyToOne
-    @JoinColumn( name = "id_brand", referencedColumnName = "id_brand", nullable = false )
-    private Brand         brand;
+    @JoinColumn(name = "id_brand", referencedColumnName = "id_brand", nullable = false)
+    private Brand brand;
     @ManyToOne
-    @JoinColumn( name = "id_body_shel_type", referencedColumnName = "id_body_shel_type", nullable = false )
+    @JoinColumn(name = "id_body_shel_type", referencedColumnName = "id_body_shel_type", nullable = false)
     private BodyShellType bodyShellType;
 
-    @OneToMany( mappedBy = "model", cascade = CascadeType.PERSIST, fetch = FetchType.LAZY )
-    private Collection<Car>    cars;
-    @OneToMany( mappedBy = "model", cascade = CascadeType.PERSIST, fetch = FetchType.LAZY )
+    @OneToMany(mappedBy = "model", cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
+    private Collection<Car> cars;
+    @OneToMany(mappedBy = "model", cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
     private Collection<Window> windows;
 
     //Constructor
@@ -61,7 +60,7 @@ public class Model implements Serializable {
         return idModel;
     }
 
-    public void setIdModel( int idModel ) {
+    public void setIdModel(int idModel) {
         this.idModel = idModel;
     }
 
@@ -69,7 +68,7 @@ public class Model implements Serializable {
         return modelName;
     }
 
-    public void setModelName( String modelName ) {
+    public void setModelName(String modelName) {
         this.modelName = modelName;
     }
 
@@ -77,7 +76,7 @@ public class Model implements Serializable {
         return code;
     }
 
-    public void setCode( String code ) {
+    public void setCode(String code) {
         this.code = code;
     }
 
@@ -85,7 +84,7 @@ public class Model implements Serializable {
         return beginDate;
     }
 
-    public void setBeginDate( Date beginDate ) {
+    public void setBeginDate(Date beginDate) {
         this.beginDate = beginDate;
     }
 
@@ -93,7 +92,7 @@ public class Model implements Serializable {
         return endDate;
     }
 
-    public void setEndDate( Date endDate ) {
+    public void setEndDate(Date endDate) {
         this.endDate = endDate;
     }
 
@@ -101,7 +100,7 @@ public class Model implements Serializable {
         return brand;
     }
 
-    public void setBrand( Brand brand ) {
+    public void setBrand(Brand brand) {
         this.brand = brand;
     }
 
@@ -109,7 +108,7 @@ public class Model implements Serializable {
         return bodyShellType;
     }
 
-    public void setBodyShelType( BodyShellType bodyShellType ) {
+    public void setBodyShelType(BodyShellType bodyShellType) {
         this.bodyShellType = bodyShellType;
     }
 
@@ -117,7 +116,7 @@ public class Model implements Serializable {
         return cars;
     }
 
-    public void setCars( Collection<Car> cars ) {
+    public void setCars(Collection<Car> cars) {
         this.cars = cars;
     }
 
@@ -125,7 +124,7 @@ public class Model implements Serializable {
         return windows;
     }
 
-    public void setWindows( Collection<Window> windows ) {
+    public void setWindows(Collection<Window> windows) {
         this.windows = windows;
     }
 
@@ -133,26 +132,26 @@ public class Model implements Serializable {
         return bodyShellType;
     }
 
-    public void setBodyShellType( BodyShellType bodyShellType ) {
+    public void setBodyShellType(BodyShellType bodyShellType) {
         this.bodyShellType = bodyShellType;
     }
 
     @Override
-    public boolean equals( Object o ) {
-        if ( this == o )
+    public boolean equals(Object o) {
+        if (this == o)
             return true;
-        if ( o == null || getClass() != o.getClass() )
+        if (o == null || getClass() != o.getClass())
             return false;
         Model model = (Model) o;
-        return idModel == model.idModel && modelName.equals( model.modelName ) && code.equals( model.code )
-                && beginDate.equals( model.beginDate ) && endDate.equals( model.endDate ) && Objects.equals(
-                brand, model.brand ) && Objects.equals( bodyShellType, model.bodyShellType )
-                && Objects.equals( cars, model.cars ) && Objects.equals( windows, model.windows );
+        return idModel == model.idModel && modelName.equals(model.modelName) && code.equals(model.code)
+                && beginDate.equals(model.beginDate) && endDate.equals(model.endDate) && Objects.equals(
+                brand, model.brand) && Objects.equals(bodyShellType, model.bodyShellType)
+                && Objects.equals(cars, model.cars) && Objects.equals(windows, model.windows);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( idModel, modelName, code, beginDate, endDate, brand, bodyShellType, cars, windows );
+        return Objects.hash(idModel, modelName, code, beginDate, endDate, brand, bodyShellType, cars, windows);
     }
 
 }

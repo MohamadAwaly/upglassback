@@ -1,18 +1,18 @@
 package be.upglassback.core.services;
 
 import be.upglassback.core.connection.EMF;
+import be.upglassback.core.dto.ModelDto;
+import be.upglassback.core.dto.WindowDto;
 import be.upglassback.core.entities.Window;
 import be.upglassback.core.repository.WindowRepository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.persistence.EntityManager;
-import javax.persistence.EntityTransaction;
-import javax.persistence.Query;
+import java.util.ArrayList;
 import java.util.List;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 @Service
 public class WindowService {
@@ -22,26 +22,34 @@ public class WindowService {
     private WindowRepository windowRepository;
 
     //Get reference list from dao
-    public List<Window> findReferenceByPagination() {
+    public List<WindowDto> findReferenceByPagination() {
         EntityManager em = EMF.getEM();
-//        EntityTransaction trans = em.getTransaction();
-        try {
-//             trans.begin();
-            return windowRepository.findReferenceByPagination(em);
-//            trans.commit();
-        } catch (Exception e) {
-            logger.info("Error get windows reference");
-            return null;
+        List<Window> windows = windowRepository.findReferenceByPagination(em);
+        List<WindowDto> windowDtos = new ArrayList<>();
+        for (Window w : windows) {
+            WindowDto windowDto = new WindowDto();
+            windowDto.setIdWindow(w.getIdWindow());
+            windowDto.setCode(w.getCode());
+            windowDto.setName(w.getName());
+            windowDto.setTotalQty(w.getTotalQty());
+            windowDto.setUnitSalePrice(w.getUnitSalePrice());
+            ModelDto modelDto = new ModelDto();
+            modelDto.setIdModel(w.getModel().getIdModel());
+            modelDto.setModelName(w.getModel().getModelName());
+            modelDto.setCode(w.getModel().getCode());
+            windowDto.setModel(modelDto);
+            windowDtos.add(windowDto);
         }
+        return windowDtos;
     }
 
-    public List findAll() {
-        return windowRepository.findAll();
-    }
-
-    public List<Integer> windowsIds() {
-        EntityManager em = EMF.getEM();
-        Query queryIds = em.createNamedQuery("Windows.ids");
-        return queryIds.getResultList();
-    }
+//    public List findAll() {
+//        return windowRepository.findAll();
+//    }
+//
+//    public List<Integer> windowsIds() {
+//        EntityManager em = EMF.getEM();
+//        Query queryIds = em.createNamedQuery("Windows.ids");
+//        return queryIds.getResultList();
+//    }
 }
