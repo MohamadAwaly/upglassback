@@ -3,22 +3,31 @@ package be.upglassback.core.dto;
 import be.upglassback.core.entities.*;
 
 import java.util.Collection;
+import java.util.List;
 
 public class WindowDto {
-
 
     private int idWindow;
     private String code;
     private String name;
     private int totalQty;
     private int unitSalePrice;
-
     private ModelDto model;
+    private WindowTypeDTO windowsType;
 
-    private WindowsType windowsType;
-    private Collection<WindowOptionWindow> windowOptionWindows;
-    private Collection<WindowOrder> windowOrders;
-    private Collection<BillingDocumentWindow> billingDocumentWindows;
+    private List<OptionsWindowDTO> optionsWindows;
+
+    public List<OptionsWindowDTO> getOptionsWindows() {
+        return optionsWindows;
+    }
+
+    public void setOptionsWindows(List<OptionsWindowDTO> optionsWindows) {
+        this.optionsWindows = optionsWindows;
+    }
+
+//    private Collection<WindowOptionWindowDTO> windowOptionWindows;
+    //private Collection<WindowOrder> windowOrders;
+    //private Collection<BillingDocumentWindow> billingDocumentWindows;
 
     //Constructor
     public WindowDto() {
@@ -64,21 +73,21 @@ public class WindowDto {
         this.model = model;
     }
 
-    public WindowsType getWindowsType() {
+    public WindowTypeDTO getWindowsType() {
         return windowsType;
     }
 
-    public void setWindowsType(WindowsType windowsType) {
+    public void setWindowsType(WindowTypeDTO windowsType) {
         this.windowsType = windowsType;
     }
 
-    public Collection<WindowOptionWindow> getCarOptionWindows() {
-        return windowOptionWindows;
-    }
+   // public Collection<WindowOptionWindow> getCarOptionWindows() {
+     //   return windowOptionWindows;
+    //}
 
-    public void setCarOptionWindows(Collection<WindowOptionWindow> windowOptionWindows) {
-        this.windowOptionWindows = windowOptionWindows;
-    }
+    //public void setCarOptionWindows(Collection<WindowOptionWindow> windowOptionWindows) {
+      //  this.windowOptionWindows = windowOptionWindows;
+    //}
 
     public int getTotalQty() {
         return totalQty;
@@ -88,29 +97,29 @@ public class WindowDto {
         this.totalQty = totalQty;
     }
 
-    public Collection<WindowOptionWindow> getWindowOptionWindows() {
-        return windowOptionWindows;
-    }
+//    public Collection<WindowOptionWindowDTO> getWindowOptionWindows() {
+//        return windowOptionWindows;
+//    }
+//
+//    public void setWindowOptionWindows(Collection<WindowOptionWindowDTO> windowOptionWindows) {
+//        this.windowOptionWindows = windowOptionWindows;
+//    }
 
-    public void setWindowOptionWindows(Collection<WindowOptionWindow> windowOptionWindows) {
-        this.windowOptionWindows = windowOptionWindows;
-    }
+    //public Collection<WindowOrder> getWindowOrders() {
+   //     return windowOrders;
+    //}
 
-    public Collection<WindowOrder> getWindowOrders() {
-        return windowOrders;
-    }
+   // public void setWindowOrders(Collection<WindowOrder> windowOrders) {
+     //   this.windowOrders = windowOrders;
+    //}
 
-    public void setWindowOrders(Collection<WindowOrder> windowOrders) {
-        this.windowOrders = windowOrders;
-    }
+    //public Collection<BillingDocumentWindow> getBillingDocumentWindows() {
+      //  return billingDocumentWindows;
+    //}
 
-    public Collection<BillingDocumentWindow> getBillingDocumentWindows() {
-        return billingDocumentWindows;
-    }
-
-    public void setBillingDocumentWindows(Collection<BillingDocumentWindow> billingDocumentWindows) {
-        this.billingDocumentWindows = billingDocumentWindows;
-    }
+    //public void setBillingDocumentWindows(Collection<BillingDocumentWindow> billingDocumentWindows) {
+      //  this.billingDocumentWindows = billingDocumentWindows;
+    //}
 
 
 }
