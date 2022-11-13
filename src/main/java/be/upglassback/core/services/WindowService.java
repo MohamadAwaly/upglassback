@@ -53,7 +53,7 @@ public class WindowService {
             windowDto.setOptionsWindows(new ArrayList<>());
             for (OptionsWindow option : w.getOptionsWindows()) {
                 final OptionsWindowDTO optionsWindowDTO = new OptionsWindowDTO();
-                optionsWindowDTO.setIdOptionsWindow(optionsWindowDTO.getIdOptionsWindow());
+                optionsWindowDTO.setIdOptionsWindow(option.getIdOptionsWindow());
                 optionsWindowDTO.setName(option.getName());
                 windowDto.getOptionsWindows().add(optionsWindowDTO);
             }
