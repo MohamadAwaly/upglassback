@@ -6,7 +6,7 @@ import java.util.Collection;
 import java.util.Objects;
 
 @NamedQueries(value = {
-        @NamedQuery(name = "Windows.brandList", query = "select b from Brand b"),
+        @NamedQuery(name = "Windows.brands", query = "select b from Brand b"),
         @NamedQuery(name = "Windows.brandListByID", query = "select b from Brand b where b.idBrand = :id"),
 
 })

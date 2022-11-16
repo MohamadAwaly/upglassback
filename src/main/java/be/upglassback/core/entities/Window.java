@@ -2,10 +2,8 @@ package be.upglassback.core.entities;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.Collection;
 import java.util.List;
 import java.util.Objects;
-import java.util.Set;
 
 @NamedQueries(value = {
         @NamedQuery(name = "Window.list",
@@ -15,7 +13,7 @@ import java.util.Set;
                 + "left join OptionsWindow ow on wow.optionsWindow = ow "
                 + "group by w.idWindow "
                 + "ORDER BY w.windowsType.name, w.idWindow desc " ),
-        @NamedQuery(name = "test", query = "select w from Window w " +
+        @NamedQuery(name = "window.getList", query = "select w from Window w " +
                 "group by w.idWindow " +
                 "order by w.windowsType.name, w.idWindow desc ")
 })

@@ -4,7 +4,6 @@ import be.upglassback.core.connection.EMF;
 import be.upglassback.core.dto.*;
 import be.upglassback.core.entities.OptionsWindow;
 import be.upglassback.core.entities.Window;
-import be.upglassback.core.entities.WindowOptionWindow;
 import be.upglassback.core.repository.WindowRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -30,7 +29,7 @@ public class WindowService {
      */
     public List<WindowDto> findReferenceByPagination() {
         EntityManager em = EMF.getEM();
-        List<Window> windows = windowRepository.findReferenceByPagination(em);
+        List<Window> windows = windowRepository.getlistRefWindoww(em);
         List<WindowDto> windowDtos = new ArrayList<>();
 
         for (Window w : windows) {

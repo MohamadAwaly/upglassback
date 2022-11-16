@@ -1,8 +1,5 @@
 package be.upglassback.core.dto;
 
-import be.upglassback.core.entities.*;
-
-import java.util.Collection;
 import java.util.List;
 
 public class WindowDto {

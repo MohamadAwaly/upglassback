@@ -1,8 +1,7 @@
 package be.upglassback.core.repository;
 
-
+import be.upglassback.core.entities.Brand;
 import be.upglassback.core.entities.Window;
-import be.upglassback.core.services.WindowService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
@@ -12,22 +11,23 @@ import javax.persistence.Query;
 import java.util.List;
 
 @Repository
-public class WindowRepository {
-    final Logger logger = LoggerFactory.getLogger(WindowRepository.class);
+public class BrandRepository {
+
+    final Logger logger = LoggerFactory.getLogger(BrandRepository.class);
 
     /**
      * Constructor
      */
-    public WindowRepository() {
+    public BrandRepository() {
     }
 
     /**
-     * Get list of reference windows
+     * Get brand list
      * @param em
      * @return
      */
-    public List getlistRefWindoww(EntityManager em) {
-        Query query = em.createNamedQuery("window.getList", Window.class);
+    public List getBrands (EntityManager em) {
+        Query query= em.createNamedQuery("Windows.brands", Brand.class);
         return query.getResultList();
     }
 }
