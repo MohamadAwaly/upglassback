@@ -10,7 +10,7 @@ public class WindowDto {
     private int totalQty;
     private int unitSalePrice;
     private ModelDto model;
-    private WindowTypeDTO windowsType;
+    private WindowsTypeDTO windowsType;
 
     private List<OptionsWindowDTO> optionsWindows;
 
@@ -70,11 +70,11 @@ public class WindowDto {
         this.model = model;
     }
 
-    public WindowTypeDTO getWindowsType() {
+    public WindowsTypeDTO getWindowsType() {
         return windowsType;
     }
 
-    public void setWindowsType(WindowTypeDTO windowsType) {
+    public void setWindowsType(WindowsTypeDTO windowsType) {
         this.windowsType = windowsType;
     }
 

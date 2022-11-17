@@ -41,7 +41,7 @@ public class WindowService {
             windowDto.setTotalQty(w.getTotalQty());
             windowDto.setUnitSalePrice(w.getUnitSalePrice());
 
-            WindowTypeDTO typeDTO = new WindowTypeDTO();
+            WindowsTypeDTO typeDTO = new WindowsTypeDTO();
             typeDTO.setIdWindowsType(w.getWindowsType().getIdWindowsType());
             typeDTO.setName(w.getWindowsType().getName());
 

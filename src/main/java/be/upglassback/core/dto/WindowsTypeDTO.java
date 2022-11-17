@@ -1,9 +1,10 @@
 package be.upglassback.core.dto;
 
-public class WindowTypeDTO {
-    private int    idWindowsType;
-    private String name;
 
+public class WindowsTypeDTO {
+
+    private int idWindowsType;
+    private String name;
 
     public int getIdWindowsType() {
         return idWindowsType;
@@ -20,5 +21,4 @@ public class WindowTypeDTO {
     public void setName(String name) {
         this.name = name;
     }
-
 }
