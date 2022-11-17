@@ -5,10 +5,12 @@ public class ModelDto {
     private int idModel;
     private String modelName;
     private String code;
+
     //Constructor
     public ModelDto() {
 
     }
+
     public int getIdModel() {
         return idModel;
     }
