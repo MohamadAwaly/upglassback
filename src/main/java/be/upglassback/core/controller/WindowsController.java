@@ -1,7 +1,6 @@
 package be.upglassback.core.controller;
 
 import be.upglassback.core.dto.WindowDto;
-import be.upglassback.core.dto.WindowOptionWindowDTO;
 import be.upglassback.core.entities.Window;
 import be.upglassback.core.services.WindowService;
 import org.springframework.beans.factory.annotation.Autowired;
