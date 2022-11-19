@@ -1,8 +1,6 @@
 package be.upglassback.core.repository;
 
-import be.upglassback.core.entities.Brand;
 import be.upglassback.core.entities.WindowsType;
-import be.upglassback.core.services.WindowsTypeService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
