@@ -7,9 +7,12 @@ import java.util.Date;
 import java.util.Objects;
 
 @NamedQueries(value = {
-        @NamedQuery(name = "Windows.modelList", query = "select distinct m  from Model m " +
-                "left join Brand b on b = m.brand " +
-                " where b.idBrand = :idBrand "),
+//        @NamedQuery(name = "Windows.modelList", query = "select distinct m  from Model m " +
+//                "left join Brand b on b = m.brand " +
+//                " where b.idBrand = :idBrand "),
+        @NamedQuery(name = "Windows.modelList", query = "select m from Model m "),
+        @NamedQuery(name = "Windows.model", query = "select distinct m  from Model m " +
+                "left join Brand b on b = m.brand "),
         @NamedQuery(name = "Windows.modelListByidBrand", query = "select distinct m.modelName from Model  m " +
                 "left join Brand b on b = m.brand " +
                 "where b.idBrand = :idBrand "),
