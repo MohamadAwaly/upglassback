@@ -19,16 +19,12 @@ public class ModelController {
     @Autowired
     ModelService modelService;
 
-    @GetMapping("/{id}")
-    public List<ModelDto> displayWindow(@PathVariable("id") int id) {
-        logger.info("id:: " + id);
-        logger.info("id:: " + id);
-        logger.info("id:: " + id);
-        logger.info("id:: " + id);
-        logger.info("id:: " + id);
-        logger.info("id:: " + id);
-        logger.info("id:: " + id);
-        logger.info("id:: " + id);
-        return modelService.listModel(id);
+//    @GetMapping("/{id}")
+//    public List<ModelDto> displayWindow(@PathVariable("id") int id) {
+//        return modelService.listModel(id);
+//    }
+    @GetMapping("models")
+    public List<ModelDto> displayWindow() {
+        return modelService.listModel();
     }
 }

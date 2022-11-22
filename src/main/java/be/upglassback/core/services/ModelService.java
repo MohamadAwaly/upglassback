@@ -23,10 +23,9 @@ public class ModelService {
     @Autowired
     ModelRepository modelRepository;
 
-    public List<ModelDto> listModel(int id) {
+    public List<ModelDto> listModel() {
         EntityManager em = EMF.getEM();
-        logger.info("dans liste model :: " + id);
-        List<Model> models = modelRepository.getModel(em, id);
+        List<Model> models = modelRepository.getModel(em);
         List<ModelDto> modelDtos = new ArrayList<>();
 
         for (Model model : models) {

@@ -1,6 +1,5 @@
 package be.upglassback.core.dto;
 
-import javax.persistence.Column;
 
 public class BrandDTO {
 

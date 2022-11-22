@@ -24,7 +24,7 @@ public class BodyShellTypeService {
     @Autowired
     BodyShellTypeRepository bodyShellTypeRepository;
 
-    public List<BodyShellTypeDTO> getBrands() {
+    public List<BodyShellTypeDTO> getBodyShellType() {
         EntityManager em = EMF.getEM();
         List<BodyShellType> bodyShellTypes = bodyShellTypeRepository.getBodyShellType(em);
         List<BodyShellTypeDTO> bodyShellTypeDTOS = new ArrayList<>();
