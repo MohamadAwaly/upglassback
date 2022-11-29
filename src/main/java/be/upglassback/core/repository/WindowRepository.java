@@ -1,8 +1,8 @@
 package be.upglassback.core.repository;
 
 
+import be.upglassback.core.dto.WindowDto;
 import be.upglassback.core.entities.Window;
-import be.upglassback.core.services.WindowService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
@@ -29,5 +29,9 @@ public class WindowRepository {
     public List getlistRefWindoww(EntityManager em) {
         Query query = em.createNamedQuery("window.getList", Window.class);
         return query.getResultList();
+    }
+
+    public void addReferences(EntityManager em, Window window) {
+        em.persist(window);
     }
 }

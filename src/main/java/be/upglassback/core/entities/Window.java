@@ -2,6 +2,7 @@ package be.upglassback.core.entities;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Collection;
 import java.util.List;
 import java.util.Objects;
 
@@ -61,10 +62,8 @@ public class Window implements Serializable {
         this.optionsWindows = optionsWindows;
     }
 
-
-
-//    @OneToMany(mappedBy = "window", cascade = {CascadeType.PERSIST, CascadeType.MERGE}, fetch = FetchType.LAZY)
-//    private Collection<WindowOptionWindow> windowOptionWindows;
+    @OneToMany(mappedBy = "window", cascade = {CascadeType.PERSIST, CascadeType.MERGE}, fetch = FetchType.LAZY)
+    private List<WindowOptionWindow> windowOptionWindows;
 //    @OneToMany(mappedBy = "window", cascade = {CascadeType.PERSIST, CascadeType.MERGE}, fetch = FetchType.EAGER)
 //    private Collection<WindowOrder> windowOrders;
 //    @OneToMany(mappedBy = "window", cascade = {CascadeType.PERSIST, CascadeType.MERGE}, fetch = FetchType.LAZY)
@@ -138,13 +137,13 @@ public class Window implements Serializable {
         this.totalQty = totalQty;
     }
 
-//    public Collection<WindowOptionWindow> getWindowOptionWindows() {
-//        return windowOptionWindows;
-//    }
-//
-//    public void setWindowOptionWindows(Collection<WindowOptionWindow> windowOptionWindows) {
-//        this.windowOptionWindows = windowOptionWindows;
-//    }
+    public List<WindowOptionWindow> getWindowOptionWindows() {
+        return windowOptionWindows;
+    }
+
+    public void setWindowOptionWindows(List<WindowOptionWindow> windowOptionWindows) {
+        this.windowOptionWindows = windowOptionWindows;
+    }
 //
 //    public Collection<WindowOrder> getWindowOrders() {
 //        return windowOrders;

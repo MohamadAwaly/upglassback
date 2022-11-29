@@ -11,9 +11,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.persistence.EntityManager;
+import javax.persistence.EntityTransaction;
 import java.util.ArrayList;
 import java.util.List;
-
 
 
 @Service
@@ -25,7 +25,7 @@ public class WindowService {
 
 
     /**
-     *     Get reference list from dao
+     * Get reference list from dao
      */
     public List<WindowDto> findReferenceByPagination() {
         EntityManager em = EMF.getEM();
@@ -50,8 +50,8 @@ public class WindowService {
             modelDto.setModelName(w.getModel().getModelName());
             modelDto.setCode(w.getModel().getCode());
             windowDto.setOptionsWindows(new ArrayList<>());
+            final OptionsWindowDTO optionsWindowDTO = new OptionsWindowDTO();
             for (OptionsWindow option : w.getOptionsWindows()) {
-                final OptionsWindowDTO optionsWindowDTO = new OptionsWindowDTO();
                 optionsWindowDTO.setIdOptionsWindow(option.getIdOptionsWindow());
                 optionsWindowDTO.setName(option.getName());
                 windowDto.getOptionsWindows().add(optionsWindowDTO);
@@ -63,4 +63,22 @@ public class WindowService {
         return windowDtos;
     }
 
+    public void addReferences(Window window) {
+        EntityManager em = EMF.getEM();
+        EntityTransaction trans = em.getTransaction();
+        try {
+            trans.begin();
+            windowRepository.addReferences(em, window);
+            trans.commit();
+        } catch (Exception e) {
+            logger.error("Error add new Reference");
+            trans.rollback();
+        } finally {
+            if (trans.isActive()) {
+                trans.rollback();
+            }
+            em.close();
+        }
+
+    }
 }
